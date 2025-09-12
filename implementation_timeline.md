@@ -19,7 +19,7 @@
 - Command center operations and communication protocols
 
 ### Phase 3: Warehouse Process Testing
-**September 10-12, 2025**
+**September 10-16, 2025**
 - Test Advanced to Basic Warehouse process changes
 - Manufacturing sites: All locations
 - Trading entities: MET, UKT, UST, MXT
