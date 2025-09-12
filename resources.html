@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - Project 5T D365 Cutover Plan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6a4c93;
+            --secondary: #00a9e0;
+            --accent1: #f26522;
+            --accent2: #ec008c;
+            --accent3: #2e3192;
+            --light: #f8f9fa;
+            --dark: #343a40;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .navbar {
+            background-color: var(--primary);
+        }
+        .navbar-brand {
+            font-weight: bold;
+            color: white !important;
+        }
+        .nav-link {
+            color: rgba(255,255,255,0.85) !important;
+        }
+        .nav-link:hover {
+            color: white !important;
+        }
+        .nav-link.active {
+            color: white !important;
+            border-bottom: 2px solid var(--secondary);
+        }
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 3rem 0;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .hero p {
+            font-size: 1.25rem;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-header {
+            background-color: var(--primary);
+            color: white;
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        .btn-primary:hover {
+            background-color: #5a3f7d;
+            border-color: #5a3f7d;
+        }
+        .btn-secondary {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+        }
+        .btn-secondary:hover {
+            background-color: #0090c0;
+            border-color: #0090c0;
+        }
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 0;
+        }
+        .footer a {
+            color: var(--secondary);
+        }
+        .footer a:hover {
+            color: white;
+        }
+        .tagline {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: rgba(255,255,255,0.9);
+        }
+        .chevron {
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+        .connect {
+            color: var(--accent1);
+            font-weight: bold;
+        }
+        .inspire {
+            color: var(--accent2);
+            font-weight: bold;
+        }
+        .innovate {
+            color: var(--accent3);
+            font-weight: bold;
+        }
+        .resource-card {
+            height: 100%;
+        }
+        .resource-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .presentation-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            overflow: hidden;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .presentation-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .download-btn {
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Project 5T</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="executive-summary.html">Executive Summary</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="customized-plan.html">Customized Plan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cutover-strategies.html">Cutover Strategies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mock-cutover-simulation.html">Mock Cutover</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="resources.html">Resources</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1>Project 5T Resources</h1>
+                    <p class="tagline">tna team transform transition together</p>
+                    <p class="lead">Access all Project 5T D365 cutover plan resources in one place</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Presentation Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Project 5T Presentation</h2>
+            <div class="row justify-c                    <div class="card">
+                        <div class="card-header">
+                            <h4>📊 Project 5T Presentation</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>Complete Project 5T D365 cutover strategy presentation with all implementation phases, timelines, and success factors.</p>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <a href="project5t_presentation_complete.html" target="_blank" class="btn btn-primary">
+                                    <i class="fas fa-play"></i> View Interactive Presentation
+                                </a>
+                                <a href="Project5T_Complete_Presentation.pptx" download class="btn btn-secondary">
+                                    <i class="fas fa-download"></i> Download PowerPoint
+                                </a>
+                            </div>
+                            <small class="text-muted mt-2 d-block">
+                                <strong>View:</strong> Opens the complete 10-slide interactive Project 5T presentation<br>
+                                <strong>Download:</strong> Downloads the complete PowerPoint presentation file
+                            </small>
+                        </div>
+                    </div>             </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Resources Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Additional Resources</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card resource-card">
+                        <div class="card-body text-center">
+                            <div class="resource-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <h5 class="card-title">Cutover Plan Documents</h5>
+                            <p class="card-text">Access all cutover plan documentation in downloadable format.</p>
+                            <a href="d365_project_5t_website_with_resources.zip" download class="btn btn-primary">
+                                <i class="fas fa-download me-2"></i> Download All Documents
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card resource-card">
+                        <div class="card-body text-center">
+                            <div class="resource-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <h5 class="card-title">Implementation Timeline</h5>
+                            <p class="card-text">View and download the detailed implementation timeline.</p>
+                            <a href="implementation_timeline.pdf" download class="btn btn-primary">
+                                <i class="fas fa-download me-2"></i> Download Timeline
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card resource-card">
+                        <div class="card-body text-center">
+                            <div class="resource-icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <h5 class="card-title">Mock Cutover Checklist</h5>
+                            <p class="card-text">Access the detailed mock cutover simulation checklist.</p>
+                            <a href="mock_cutover_checklist.pdf" download class="btn btn-primary">
+                                <i class="fas fa-download me-2"></i> Download Checklist
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Project 5T: D365 Cutover Plan</h4>
+                    <p>TNA Solutions - Global Implementation</p>
+                    <p>Go-Live Date: November 3, 2025</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">
+                        <span class="chevron">&raquo;</span> <span class="connect">connect</span> 
+                        <span class="chevron">&raquo;</span> <span class="inspire">inspire</span> 
+                        <span class="chevron">&raquo;</span> <span class="innovate">innovate</span>
+                    </p>
+                    <p class="mt-3">
+                        <a href="index.html">Home</a> | 
+                        <a href="customized-plan.html">Cutover Plan</a> | 
+                        <a href="mock-cutover-simulation.html">Mock Simulation</a> | 
+                        <a href="resources.html">Resources</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

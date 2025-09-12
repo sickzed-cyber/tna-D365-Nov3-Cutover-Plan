@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock Cutover Simulation - D365 Go-Live Cutover Plan</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: #1f2937;
+            background-color: #f9fafb;
+            line-height: 1.5;
+        }
+        .content h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .content h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+        .content h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .content p {
+            margin-bottom: 1rem;
+        }
+        .content ul, .content ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+        .content ul {
+            list-style-type: disc;
+        }
+        .content ol {
+            list-style-type: decimal;
+        }
+        .content li {
+            margin-bottom: 0.5rem;
+        }
+        .partner-card {
+            transition: transform 0.2s ease-in-out;
+        }
+        .partner-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-blue-800 text-white shadow-md">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <h1 class="text-2xl font-bold">
+                        <a href="index.html" class="hover:text-blue-200">
+                            D365 Cutover Plan
+                        </a>
+                    </h1>
+                </div>
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-6">
+                        <li><a href="index.html" class="hover:text-blue-200">Home</a></li>
+                        <li><a href="customized-plan.html" class="hover:text-blue-200">Customized Plan</a></li>
+                        <li><a href="cutover-strategies.html" class="hover:text-blue-200">Cutover Strategies</a></li>
+                        <li><a href="mock-cutover-simulation.html" class="hover:text-blue-200 font-bold border-b-2 border-white">Mock Cutover</a></li>
+                        <li><a href="resources.html" class="hover:text-blue-200">Resources</a></li>
+                    </ul>
+                </nav>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="md:hidden mt-4 hidden">
+                <ul class="flex flex-col space-y-2">
+                    <li><a href="index.html" class="block hover:text-blue-200">Home</a></li>
+                    <li><a href="customized-plan.html" class="block hover:text-blue-200">Customized Plan</a></li>
+                    <li><a href="cutover-strategies.html" class="block hover:text-blue-200">Cutover Strategies</a></li>
+                    <li><a href="mock-cutover-simulation.html" class="block hover:text-blue-200 font-bold">Mock Cutover</a></li>
+                    <li><a href="resources.html" class="block hover:text-blue-200">Resources</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="max-w-5xl mx-auto">
+            <div class="bg-blue-50 p-6 rounded-lg mb-8">
+                <h1 class="text-3xl font-bold mb-4">Full Mock Cutover Simulation</h1>
+                <p class="text-lg text-gray-700">
+                    A comprehensive simulation plan for September 8-14, 2025, focusing on coordination between external partners and integration validation before the actual cutover.
+                </p>
+            </div>
+            
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-4">Simulation Overview</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-gray-700 mb-6">
+                        The full mock cutover simulation will serve as a complete dress rehearsal for the actual cutover planned for October 29 - November 3, 2025. This simulation will validate all technical procedures, coordination mechanisms, and business continuity plans with a core focus on the coordination between external partners.
+                    </p>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg mb-6">
+                        <h3 class="text-xl font-bold text-blue-800 mb-3">Simulation Objectives</h3>
+                        <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                            <li>Validate the technical feasibility of the 6-day cutover window</li>
+                            <li>Test coordination procedures between all external partners</li>
+                            <li>Verify integration points between FINOPS, CRM, Citi Bank, and Vault Design System</li>
+                            <li>Identify potential bottlenecks or risks in the cutover process</li>
+                            <li>Refine the cutover plan based on simulation results</li>
+                            <li>Train the cutover team on their roles and responsibilities</li>
+                            <li>Test business continuity procedures during the simulated blackout period</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-4">External Partner Coordination</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-gray-700 mb-6">
+                        The mock cutover simulation will focus on coordinating activities between the following external partners:
+                    </p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-blue-50 p-6 rounded-lg shadow partner-card">
+                            <h3 class="text-xl font-bold text-blue-800 mb-3">HSO (FINOPS Implementation Partner)</h3>
+                            <p class="text-gray-700 mb-4">Lead partner responsible for FINOPS implementation and overall cutover coordination.</p>
+                            <h4 class="font-bold text-blue-700 mb-2">Key Responsibilities:</h4>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Lead the overall mock cutover process</li>
+                                <li>Coordinate FINOPS data migration activities</li>
+                                <li>Configure FINOPS system parameters</li>
+                                <li>Set up security roles and user access</li>
+                                <li>Implement intercompany processes</li>
+                                <li>Manage integration points with other systems</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-6 rounded-lg shadow partner-card">
+                            <h3 class="text-xl font-bold text-blue-800 mb-3">DI (CRM Implementation Partner)</h3>
+                            <p class="text-gray-700 mb-4">Partner responsible for CRM upgrade and Dual Write connection to FINOPS.</p>
+                            <h4 class="font-bold text-blue-700 mb-2">Key Responsibilities:</h4>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Simulate taking down live CRM system</li>
+                                <li>Perform CRM upgrade procedures</li>
+                                <li>Prepare CRM for Dual Write connection to FINOPS</li>
+                                <li>Configure customer master data synchronization</li>
+                                <li>Test quote-to-cash process flows</li>
+                                <li>Validate CRM functionality post-upgrade</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold mb-4">HSO-Managed Integrations</h3>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-yellow-50 p-6 rounded-lg shadow partner-card">
+                            <h3 class="text-xl font-bold text-yellow-800 mb-3">Citi Bank Integration</h3>
+                            <h4 class="font-bold text-yellow-700 mb-2">Key Responsibilities:</h4>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Simulate banking system integration procedures</li>
+                                <li>Test payment processing workflows</li>
+                                <li>Validate bank reconciliation processes</li>
+                                <li>Verify transaction security protocols</li>
+                                <li>Ensure compliance with banking regulations</li>
+                                <li>Test failover and recovery procedures</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-6 rounded-lg shadow partner-card">
+                            <h3 class="text-xl font-bold text-yellow-800 mb-3">Vault Design System Integration</h3>
+                            <h4 class="font-bold text-yellow-700 mb-2">Key Responsibilities:</h4>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Simulate document management workflows</li>
+                                <li>Test design document migration</li>
+                                <li>Validate version control and approval processes</li>
+                                <li>Configure document access controls</li>
+                                <li>Test design release freeze and resumption procedures</li>
+                                <li>Verify integration with engineering change management</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-4">Detailed Simulation Schedule</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="overflow-x-auto">
+                        <div class="bg-yellow-50 p-4 rounded-lg mb-6">
+                            <h3 class="font-bold text-yellow-800 mb-2">Two-Week Mock Cutover Structure</h3>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <h4 class="font-semibold text-yellow-700">Week 1: Data Preload (September 8-14, 2025)</h4>
+                                    <p class="text-sm text-yellow-700">Focus on data migration, master data setup, and initial system preparation</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-yellow-700">Week 2: Blackout Simulation (September 15-19, 2025)</h4>
+                                    <p class="text-sm text-yellow-700">Final configuration, integrations, and simulation of the actual blackout period</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-bold mb-4 text-blue-800">Week 2: Blackout Period Simulation Schedule (September 15-19, 2025)</h3>
+                        <table class="min-w-full bg-white border border-gray-200">
+                            <thead>
+                                <tr>
+                                    <th class="py-3 px-4 bg-blue-100 font-bold text-left text-blue-800 border-b">Day</th>
+                                    <th class="py-3 px-4 bg-blue-100 font-bold text-left text-blue-800 border-b">Date</th>
+                                    <th class="py-3 px-4 bg-blue-100 font-bold text-left text-blue-800 border-b">Focus</th>
+                                    <th class="py-3 px-4 bg-blue-100 font-bold text-left text-blue-800 border-b">Key Activities</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="py-3 px-4 border-b font-medium">Day 1</td>
+                                    <td class="py-3 px-4 border-b">September 15, 2025</td>
+                                    <td class="py-3 px-4 border-b">Simulation Kickoff & System Freeze</td>
+                                    <td class="py-3 px-4 border-b">
+                                        <ul class="list-disc pl-5 space-y-1">
+                                            <li>Kickoff meeting with all teams</li>
+                                            <li>Implement simulated transaction freeze</li>
+                                            <li>Begin simulated month-end close</li>
+                                            <li>Simulate CRM system shutdown</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="py-3 px-4 border-b font-medium">Day 2</td>
+                                    <td class="py-3 px-4 border-b">September 16, 2025</td>
+                                    <td class="py-3 px-4 border-b">Final Data Migration & Configuration</td>
+                                    <td class="py-3 px-4 border-b">
+                                        <ul class="list-disc pl-5 space-y-1">
+                                            <li>Complete final data migration from preload</li>
+                                            <li>Apply final configuration changes</li>
+                                            <li>Complete CRM upgrade procedures</li>
+                                            <li>Begin Dual Write connection setup</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3 px-4 border-b font-medium">Day 3</td>
+                                    <td class="py-3 px-4 border-b">September 17, 2025</td>
+                                    <td class="py-3 px-4 border-b">Integration Setup & Testing</td>
+                                    <td class="py-3 px-4 border-b">
+                                        <ul class="list-disc pl-5 space-y-1">
+                                            <li>Establish Dual Write connections</li>
+                                            <li>Set up Citi Bank integration</li>
+                                            <li>Configure Vault Design System integration</li>
+                                            <li>Test customer master synchronization</li>
+                                            <li>Validate payment processing with Citi Bank</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="py-3 px-4 border-b font-medium">Day 4</td>
+                                    <td class="py-3 px-4 border-b">September 18, 2025</td>
+                                    <td class="py-3 px-4 border-b">System Validation & End-to-End Testing</td>
+                                    <td class="py-3 px-4 border-b">
+                                        <ul class="list-disc pl-5 space-y-1">
+                                            <li>End-to-end business process testing</li>
+                                            <li>Validate order-to-cash processes</li>
+                                            <li>Test procure-to-pay workflows</li>
+                                            <li>Verify intercompany transactions</li>
+                                            <li>Test security and access controls</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3 px-4 border-b font-medium">Day 5</td>
+                                    <td class="py-3 px-4 border-b">September 19, 2025</td>
+                                    <td class="py-3 px-4 border-b">Go/No-Go Assessment & Simulated Go-Live</td>
+                                    <td class="py-3 px-4 border-b">
+                                        <ul class="list-disc pl-5 space-y-1">
+                                            <li>Review test results from previous days</li>
+                                            <li>Conduct go/no-go assessment</li>
+                                            <li>Simulate system activation for all users</li>
+                                            <li>Begin hypercare support simulation</li>
+                                            <li>Collect feedback and lessons learned</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-4">Daily Partner Activities</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-blue-800">Day 1: Simulation Kickoff & System Freeze (September 15, 2025)</h3>
+                        
+                        <div class="grid md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-bold text-blue-700 mb-2">HSO Activities</h4>
+                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                    <li>Lead kickoff meeting</li>
+                                    <li>Coordinate system freeze procedures</li>
+                                    <li>Oversee month-end close simulation</li>
+                                    <li>Prepare FINOPS environment for data migration</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-bold text-blue-700 mb-2">DI Activities</h4>
+                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                    <li>Simulate CRM system shutdown</li>
+                                    <li>Begin CRM upgrade procedures</li>
+                                    <li>Extract CRM data for migration</li>
+                                    <li>Document CRM system state pre-upgrade</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-bold text-blue-700 mb-2">Integration Activities</h4>
+                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                    <li>Document current state of all integration points</li>
+                                    <li>Prepare integration test scenarios</li>
+                                    <li>Verify integration monitoring tools</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-blue-800">Day 5: Integration Setup & Testing (September 5, 2025)</h3>
+                        
+                        <div class="grid md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-bold text-blue-700 mb-2">HSO Activities</h4>
+                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                    <li>Coordinate integration testing</li>
+                                    <li>Validate FINOPS integration endpoints</li>
+                                    <li>Test intercompany processes</li>
+                                    <li>Document integration test results</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-bold text-blue-700 mb-2">DI Activities</h4>
+                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                    <li>Lead Dual Write testing</li>
+                                    <li>Validate CRM data synchronization</li>
+                                    <li>Test CRM process flows</li>
+                                    <li>Document CRM integration results</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-bold text-blue-700 mb-2">Integration Activities</h4>
+                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                    <li>Test Citi Bank transaction processing</li>
+                                    <li>Validate Vault document workflows</li>
+                                    <li>Test design document access controls</li>
+                                    <li>Document integration test results</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-4">Simulation Governance</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="text-xl font-bold mb-4 text-blue-800">Command Center Structure</h3>
+                            <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                                <h4 class="font-bold text-blue-700 mb-2">Global Cutover Command Center</h4>
+                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                    <li>Location: TNA Solutions Headquarters</li>
+                                    <li>Hours of Operation: 24/7 during simulation</li>
+                                    <li>Staffing: Representatives from all teams and external partners</li>
+                                    <li>Communication Channels: Microsoft Teams, Email, Phone</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-bold text-blue-700 mb-2">Regional Support Centers</h4>
+                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                    <li>APAC: Sydney Office</li>
+                                    <li>EMEA: UK Office</li>
+                                    <li>Americas: US Office</li>
+                                    <li>Hours: Regional business hours with on-call support</li>
+                                    <li>Staffing: Regional IT teams and business representatives</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-bold mb-4 text-blue-800">Communication Plan</h3>
+                            <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                                <h4 class="font-bold text-blue-700 mb-2">Daily Briefings</h4>
+                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                    <li>Time: 8:00 AM - 8:30 AM (UTC)</li>
+                                    <li>Participants: All team leads and project managers</li>
+                                    <li>Format: Virtual meeting with status updates</li>
+                                    <li>Documentation: Daily briefing notes distributed</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-bold text-blue-700 mb-2">Issue Management</h4>
+                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                    <li>Issue Logging: Centralized issue tracking system</li>
+                                    <li>Severity Classification: Critical, High, Medium, Low</li>
+                                    <li>Escalation Path: Team Lead → Project Manager → Steering Committee</li>
+                                    <li>Resolution Timeframes: Based on severity level</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-4">Success Criteria & Post-Simulation Activities</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-bold text-green-800 mb-3">Success Criteria</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                                <li><span class="font-medium">Technical Validation:</span> All data migration procedures completed successfully, all integrations functioning</li>
+                                <li><span class="font-medium">Process Validation:</span> All business processes tested and functioning correctly</li>
+                                <li><span class="font-medium">Team Readiness:</span> All team members understand their roles and responsibilities</li>
+                                <li><span class="font-medium">Documentation:</span> All procedures documented and validated</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-bold text-blue-800 mb-3">Post-Simulation Activities</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                                <li><span class="font-medium">Simulation Results Analysis:</span> September 9-10, 2025</li>
+                                <li><span class="font-medium">Cutover Plan Refinement:</span> September 11-15, 2025</li>
+                                <li><span class="font-medium">Team Training:</span> September 16-20, 2025</li>
+                                <li><span class="font-medium">Final Readiness Assessment:</span> September 21-25, 2025</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-100 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-blue-800 mb-3">Conclusion</h3>
+                        <p class="text-gray-700">
+                            The full mock cutover simulation from September 8-14, 2025 will serve as a critical validation of the cutover plan and coordination procedures between HSO, DI, and integration partners. By simulating the entire cutover process, including FINOPS implementation, CRM upgrade, Dual Write connection, and integrations with Citi Bank and Vault Design System, TNA Solutions will identify and address potential issues before the actual cutover. The lessons learned from this simulation will be incorporated into the final cutover plan, ensuring a smooth transition to D365 on November 3, 2025.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2025 TNA Solutions D365 Implementation</p>
+                </div>
+                <div>
+                    <p>Last Updated: August 15, 2025</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

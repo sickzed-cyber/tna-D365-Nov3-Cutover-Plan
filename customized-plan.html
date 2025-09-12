@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customized Plan - D365 Go-Live Cutover Plan</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: #1f2937;
+            background-color: #f9fafb;
+            line-height: 1.5;
+        }
+        .content h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .content h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+        .content h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .content p {
+            margin-bottom: 1rem;
+        }
+        .content ul, .content ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+        .content ul {
+            list-style-type: disc;
+        }
+        .content ol {
+            list-style-type: decimal;
+        }
+        .content li {
+            margin-bottom: 0.5rem;
+        }
+        .timeline-item {
+            transition: transform 0.2s ease-in-out;
+        }
+        .timeline-item:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-blue-800 text-white shadow-md">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <h1 class="text-2xl font-bold">
+                        <a href="index.html" class="hover:text-blue-200">
+                            D365 Cutover Plan
+                        </a>
+                    </h1>
+                </div>
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-6">
+                        <li><a href="index.html" class="hover:text-blue-200">Home</a></li>
+                        <li><a href="customized-plan.html" class="hover:text-blue-200 font-bold border-b-2 border-white">Customized Plan</a></li>
+                        <li><a href="cutover-strategies.html" class="hover:text-blue-200">Cutover Strategies</a></li>
+                        <li><a href="mock-cutover-simulation.html" class="hover:text-blue-200">Mock Cutover</a></li>
+                        <li><a href="resources.html" class="hover:text-blue-200">Resources</a></li>
+                    </ul>
+                </nav>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="md:hidden mt-4 hidden">
+                <ul class="flex flex-col space-y-2">
+                    <li><a href="index.html" class="block hover:text-blue-200">Home</a></li>
+                    <li><a href="customized-plan.html" class="block hover:text-blue-200 font-bold">Customized Plan</a></li>
+                    <li><a href="cutover-strategies.html" class="block hover:text-blue-200">Cutover Strategies</a></li>
+                    <li><a href="mock-cutover-simulation.html" class="block hover:text-blue-200">Mock Cutover</a></li>
+                    <li><a href="resources.html" class="block hover:text-blue-200">Resources</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="max-w-5xl mx-auto">
+            <div class="bg-blue-50 p-6 rounded-lg mb-8">
+                <h1 class="text-3xl font-bold mb-4">Customized D365 Cutover Plan</h1>
+                <p class="text-lg text-gray-700">
+                    A tailored approach for TNA Solutions' global operations with a synchronized cutover across all entities, targeting go-live on November 3, 2025.
+                </p>
+            </div>
+            
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-4">Implementation Timeline Overview</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-white border border-gray-200">
+                            <thead>
+                                <tr>
+                                    <th class="py-3 px-4 bg-blue-100 font-bold text-left text-blue-800 border-b">Phase</th>
+                                    <th class="py-3 px-4 bg-blue-100 font-bold text-left text-blue-800 border-b">Dates</th>
+                                    <th class="py-3 px-4 bg-blue-100 font-bold text-left text-blue-800 border-b">Key Activities</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="py-3 px-4 border-b font-medium">UAT (User Acceptance Testing)</td>
+                                    <td class="py-3 px-4 border-b">August 10 - September 24, 2025</td>
+                                    <td class="py-3 px-4 border-b">
+                                        Comprehensive user acceptance testing across all functional areas and business processes
+                                    </td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="py-3 px-4 border-b font-medium">ETL4 Data Validation</td>
+                                    <td class="py-3 px-4 border-b">August 20-28, 2025</td>
+                                    <td class="py-3 px-4 border-b">
+                                        Address UAT issues, validate ETL3 data, resolve key data issues for September simulation
+                                    </td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="py-3 px-4 border-b font-medium">Full Mock Cutover Simulation</td>
+                                    <td class="py-3 px-4 border-b">September 8-14, 2025</td>
+                                    <td class="py-3 px-4 border-b">
+                                        Simulate full cutover with all external partners (HSO, DI, Citi Bank, Vault)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3 px-4 border-b font-medium">Warehouse Process Change Testing</td>
+                                    <td class="py-3 px-4 border-b">September 10-12, 2025</td>
+                                    <td class="py-3 px-4 border-b">
+                                        Test Advanced to Basic Warehouse changes for manufacturing sites and top 4 trading entities
+                                    </td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="py-3 px-4 border-b font-medium">Key User/Power User Readiness</td>
+                                    <td class="py-3 px-4 border-b">September 10 - October 26, 2025</td>
+                                    <td class="py-3 px-4 border-b">
+                                        Ensure team members across all areas (CRM, FS, SCM, FIN) are trained and ready
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3 px-4 border-b font-medium">Risk Reduction Measures</td>
+                                    <td class="py-3 px-4 border-b">Sept 15- Oct 22, 2025</td>
+                                    <td class="py-3 px-4 border-b">
+                                        Design freeze (Oct 24th), last vendor deliveries (Oct 24), early customer shipments
+                                    </td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="py-3 px-4 border-b font-medium">Cutover Execution</td>
+                                    <td class="py-3 px-4 border-b">October 29 - November 3, 2025</td>
+                                    <td class="py-3 px-4 border-b">
+                                        System freeze, data migration, configuration, CRM integration, go-live
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3 px-4 border-b font-medium">Post-Go-Live Activities</td>
+                                    <td class="py-3 px-4 border-b">November 4-6, 2025</td>
+                                    <td class="py-3 px-4 border-b">
+                                        Resume vendor deliveries (Oct 3), process manual transactions, release new designs (Oct 6)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-4">UAT - User Acceptance Testing (August 10 - September 24, 2025)</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-gray-700 mb-6">
+                        Comprehensive User Acceptance Testing phase running from August 10 through September 24, 2025, ensuring all business processes and functional areas are thoroughly validated before go-live.
+                    </p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-blue-800 mb-2">UAT Scope</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>End-to-end business process testing</li>
+                                <li>Integration testing across all modules</li>
+                                <li>User interface and workflow validation</li>
+                                <li>Performance and load testing</li>
+                                <li>Security and access control testing</li>
+                                <li>Reporting and analytics validation</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-blue-800 mb-2">Functional Areas</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li><span class="font-medium">CRM:</span> Customer relationship management</li>
+                                <li><span class="font-medium">Field Service:</span> Service management and scheduling</li>
+                                <li><span class="font-medium">Supply Chain:</span> Procurement and inventory</li>
+                                <li><span class="font-medium">Finance:</span> General ledger and reporting</li>
+                                <li><span class="font-medium">Manufacturing:</span> Production processes</li>
+                                <li><span class="font-medium">Intercompany:</span> Cross-entity transactions</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-gray-800 mb-2">UAT Completion & Sign-off</h3>
+                        <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                            <li><strong>UAT Completion:</strong> September 24, 2025 - All testing activities completed</li>
+                            <li><strong>UAT Sign-off:</strong> September 26, 2025 - Formal approval and readiness confirmation</li>
+                            <li>Issue resolution and defect closure</li>
+                            <li>Business readiness assessment</li>
+                            <li>Go-live readiness certification</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-4">ETL4 Data Validation (August 20-28, 2025)</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                        <h3 class="text-xl font-bold text-blue-800 mb-3">Key Focus Areas</h3>
+                        <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                            <li>Address issues identified during User Acceptance Testing (UAT)</li>
+                            <li>Validate data from ETL3 extraction and transformation</li>
+                            <li>Resolve key data issues affecting the cutover simulation</li>
+                            <li>Refine data migration scripts based on ETL3 findings</li>
+                            <li>Prepare data validation procedures for September cutover simulation</li>
+                            <li>Document data quality metrics and improvement strategies</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-gray-800 mb-2">Data Validation Activities</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Identification and resolution of data quality issues from ETL3</li>
+                                <li>Refinement of data transformation rules based on UAT feedback</li>
+                                <li>Validation of master data consistency across entities</li>
+                                <li>Testing of data migration scripts with production-like volumes</li>
+                                <li>Performance optimization of data loading processes</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-gray-800 mb-2">Expected Outcomes</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Improved data quality for September simulation</li>
+                                <li>Optimized data migration scripts</li>
+                                <li>Documented data validation procedures</li>
+                                <li>Resolved critical data issues identified in UAT</li>
+                                <li>Enhanced data loading performance</li>
+                                <li>Validated ETL3 data for accuracy and completeness</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-4">Mock Cutover Simulation (September 8-14, 2025)</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-gray-700 mb-6">
+                        A comprehensive simulation with all external partners to validate coordination procedures and integration points before the actual cutover.
+                    </p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-purple-800 mb-2">External Partner Coordination</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li><span class="font-medium">HSO (FINOPS):</span> Lead overall cutover process</li>
+                                <li><span class="font-medium">DI (CRM):</span> CRM upgrade and Dual Write connection</li>
+                                <li><span class="font-medium">Citi Bank:</span> Banking system integration</li>
+                                <li><span class="font-medium">Vault Design System:</span> Document management workflows</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-purple-800 mb-2">Simulation Objectives</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Validate technical feasibility of 6-day cutover window</li>
+                                <li>Test coordination procedures between partners</li>
+                                <li>Verify integration points between systems</li>
+                                <li>Identify potential bottlenecks or risks</li>
+                                <li>Refine cutover plan based on simulation results</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mb-6">
+                        <a href="mock-cutover-simulation.html" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
+                            View Full Simulation Details
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-8" id="warehouse-testing">
+                <h2 class="text-2xl font-bold mb-4">Warehouse Process Change Testing (September 10-12, 2025)</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="bg-yellow-50 p-4 rounded-lg mb-6">
+                        <h3 class="text-xl font-bold text-yellow-800 mb-3">Advanced to Basic Warehouse Transition</h3>
+                        <p class="text-gray-700 mb-4">
+                            Testing the transition from Advanced Warehouse to Basic Warehouse processes in all manufacturing sites and top 4 trading entities (MET, UKT, UST, MXT).
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="font-bold text-yellow-700 mb-2">Key Testing Activities</h4>
+                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                    <li>Process mapping validation</li>
+                                    <li>Configuration testing</li>
+                                    <li>Picking and putaway process verification</li>
+                                    <li>Receiving and shipping procedure testing</li>
+                                    <li>Integration with production and sales</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-yellow-700 mb-2">Affected Entities</h4>
+                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                    <li>All manufacturing sites (US, UK, Melbourne, Sydney, China, Netherlands)</li>
+                                    <li>MET (Melbourne Trading)</li>
+                                    <li>UKT (UK Trading)</li>
+                                    <li>UST (US Trading)</li>
+                                    <li>MXT (Mexico Trading)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-gray-800 mb-2">Process Changes</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Simplified inventory management workflows</li>
+                                <li>Modified picking and putaway processes</li>
+                                <li>Adjusted receiving and shipping procedures</li>
+                                <li>Streamlined warehouse operations</li>
+                                <li>Revised integration with production</li>
+                                <li>Updated reporting and analytics</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-gray-800 mb-2">Expected Outcomes</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Validated warehouse process changes</li>
+                                <li>Confirmed integration with other modules</li>
+                                <li>Verified performance under expected volumes</li>
+                                <li>Documented exception handling procedures</li>
+                                <li>Finalized user training materials</li>
+                                <li>Updated process documentation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-8" id="user-readiness">
+                <h2 class="text-2xl font-bold mb-4">Key User/Power User Readiness (September 10 - October 26, 2025)</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="bg-green-50 p-4 rounded-lg mb-6">
+                        <h3 class="text-xl font-bold text-green-800 mb-3">Training and Knowledge Transfer</h3>
+                        <p class="text-gray-700 mb-4">
+                            Key Users and Power Users will ensure their team members across all functional areas are fully trained and ready to work in the new system from October 2nd.
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="font-bold text-green-700 mb-2">Key Activities</h4>
+                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                    <li>Conduct specialized training sessions</li>
+                                    <li>Validate team member readiness</li>
+                                    <li>Address knowledge gaps</li>
+                                    <li>Create quick reference guides</li>
+                                    <li>Establish local support networks</li>
+                                    <li>Participate in final readiness verification</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-green-700 mb-2">Functional Areas</h4>
+                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                    <li>CRM: Sales processes, customer management</li>
+                                    <li>Field Service: Service orders, scheduling</li>
+                                    <li>SCM: Procurement, inventory, production</li>
+                                    <li>Finance: GL, AP, AR, fixed assets</li>
+                                    <li>Project Management: Projects, time, expense</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-gray-800 mb-2">Readiness Assessment</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Knowledge verification through exercises</li>
+                                <li>Process execution validation in test environments</li>
+                                <li>Role-specific task completion verification</li>
+                                <li>Documentation of readiness status</li>
+                                <li>Identification of areas needing additional training</li>
+                                <li>Development of go-live support plans</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-gray-800 mb-2">Expected Outcomes</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Fully trained user base across all entities</li>
+                                <li>Documented readiness status by role</li>
+                                <li>Quick reference materials for common tasks</li>
+                                <li>Established local support networks</li>
+                                <li>Confidence in system usage from day one</li>
+                                <li>Reduced reliance on external support</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-8" id="risk-reduction">
+                <h2 class="text-2xl font-bold mb-4">Risk Reduction Measures</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="bg-yellow-50 p-4 rounded-lg mb-6">
+                        <h3 class="text-xl font-bold text-yellow-800 mb-3">Blackout Period Risk Mitigation</h3>
+                        <p class="text-gray-700 mb-4">
+                            To minimize business disruption during the cutover blackout period, the following measures will be implemented:
+                        </p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-white border border-yellow-200 p-4 rounded-lg shadow-sm">
+                            <h3 class="font-bold text-yellow-800 mb-2">Vendor Delivery Management</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Last deliveries accepted: October 24, 2025</li>
+                                <li>Vendor communication plan: August 15 - September 15</li>
+                                <li>Resume deliveries: November 4, 2025</li>
+                                <li>Special handling procedures for critical supplies</li>
+                                <li>Emergency procurement process during blackout</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-white border border-yellow-200 p-4 rounded-lg shadow-sm">
+                            <h3 class="font-bold text-yellow-800 mb-2">Customer Order Fulfillment</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Early shipment of customer orders where possible</li>
+                                <li>Customer communication plan: August 15 - September 15</li>
+                                <li>Priority order identification for post-go-live processing</li>
+                                <li>Manual order tracking during blackout period</li>
+                                <li>Customer service contingency procedures</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-white border border-yellow-200 p-4 rounded-lg shadow-sm">
+                            <h3 class="font-bold text-yellow-800 mb-2">Design Release Freeze</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Design freeze begins: October 24, 2025</li>
+                                <li>Designs held in Vault during freeze period</li>
+                                <li>Resume design releases: November 6, 2025</li>
+                                <li>Emergency design release procedure for critical needs</li>
+                                <li>Design team training during freeze period</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-white border border-yellow-200 p-4 rounded-lg shadow-sm">
+                            <h3 class="font-bold text-yellow-800 mb-2">Manual Transaction Processing</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Templates for urgent transactions during blackout</li>
+                                <li>Training on manual procedures: October 12-27</li>
+                                <li>Process for loading transactions after November 5</li>
+                                <li>Prioritization framework for manual transactions</li>
+                                <li>Reconciliation procedures for manual entries</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-4">Cutover Execution (October 29 - November 3, 2025)</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                        <h3 class="text-xl font-bold text-blue-800 mb-3">6-Day Cutover Window</h3>
+                        <p class="text-gray-700 mb-4">
+                            The condensed cutover approach leverages improved data loading capabilities to implement a synchronized global cutover across all entities within a 6-day window.
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="timeline-item bg-white border-l-4 border-blue-500 pl-4 py-2">
+                            <h3 class="font-bold text-blue-800">Phase 1: System Freeze and Initial Data Extraction (October 28, 2025)</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1 mt-2">
+                                <li>Implement transaction freeze in legacy systems</li>
+                                <li>Complete September month-end close activities</li>
+                                <li>Extract initial data from legacy systems</li>
+                                <li>Begin using manual transaction templates</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="timeline-item bg-white border-l-4 border-blue-500 pl-4 py-2">
+                            <h3 class="font-bold text-blue-800">Phase 2: Data Migration for All Entities (September 27-29, 2025)</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1 mt-2">
+                                <li>Transform and load master data for all entities</li>
+                                <li>Load products and supporting data</li>
+                                <li>Load BOMs, routings, and inventory data</li>
+                                <li>Load open transactions and balances</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="timeline-item bg-white border-l-4 border-blue-500 pl-4 py-2">
+                            <h3 class="font-bold text-blue-800">Phase 3: System Configuration and Validation (September 30 - October 1, 2025)</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1 mt-2">
+                                <li>Configure system parameters for all entities</li>
+                                <li>Set up security roles and user access</li>
+                                <li>Configure workflows and approval processes</li>
+                                <li>Validate intercompany processes</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="timeline-item bg-white border-l-4 border-blue-500 pl-4 py-2">
+                            <h3 class="font-bold text-blue-800">Phase 4: CRM Integration and Final Preparation (October 1, 2025)</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1 mt-2">
+                                <li>Configure CRM integration for all entities</li>
+                                <li>Establish dual-write connections</li>
+                                <li>Synchronize customer and product data</li>
+                                <li>Conduct final go/no-go assessment</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="timeline-item bg-white border-l-4 border-green-500 pl-4 py-2">
+                            <h3 class="font-bold text-green-800">Phase 5: Go-Live (November 3, 2025)</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1 mt-2">
+                                <li>Activate D365 for all users globally</li>
+                                <li>Implement hypercare support model</li>
+                                <li>Monitor system performance and stability</li>
+                                <li>Begin post-implementation support</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-4">Post-Go-Live Activities</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-green-800 mb-2">Immediate Post-Go-Live (October 2-5, 2025)</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Enter all manual transactions collected during blackout</li>
+                                <li>Resume normal vendor deliveries (November 4, 2025)</li>
+                                <li>Process backlogged customer orders</li>
+                                <li>Validate system functionality across all entities</li>
+                                <li>Address critical issues through hypercare support</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-green-800 mb-2">New Product Design Release (November 6, 2025 onwards)</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Begin releasing new product designs from Vault into D365</li>
+                                <li>Resume normal design release processes</li>
+                                <li>Validate design-to-manufacturing processes in D365</li>
+                                <li>Monitor design release performance</li>
+                                <li>Optimize design release workflows</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-4">Critical Success Factors</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-blue-800 mb-2">Preparation and Planning</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Detailed task-level planning for 6-day window</li>
+                                <li>Clear ownership and accountability</li>
+                                <li>Comprehensive communication plan</li>
+                                <li>Thorough testing and validation procedures</li>
+                                <li>Robust issue management process</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-blue-800 mb-2">Resource Allocation</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Dedicated resources for cutover period</li>
+                                <li>Subject matter experts available for all functional areas</li>
+                                <li>Technical specialists for data migration</li>
+                                <li>Extended work schedules during cutover</li>
+                                <li>Global coordination team</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-blue-800 mb-2">Executive Sponsorship</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Active executive involvement during cutover</li>
+                                <li>Rapid decision-making process</li>
+                                <li>Clear escalation paths</li>
+                                <li>Visible leadership support</li>
+                                <li>Regular status updates to leadership team</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-blue-800 mb-2">User Readiness</h3>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Comprehensive training program completed before cutover</li>
+                                <li>Super-users identified and prepared</li>
+                                <li>Clear communication about cutover timeline and impact</li>
+                                <li>User support materials and quick reference guides</li>
+                                <li>Feedback mechanisms for issue reporting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2025 TNA Solutions D365 Implementation</p>
+                </div>
+                <div>
+                    <p>Last Updated: August 15, 2025</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

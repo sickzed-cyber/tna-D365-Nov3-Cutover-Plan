@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Summary - Project 5T D365 Cutover Plan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .navbar {
+            background: linear-gradient(90deg, #6a4c93 0%, #00a9e0 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.8rem;
+            color: white !important;
+        }
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #f8f9fa !important;
+            transform: translateY(-2px);
+        }
+        .navbar-nav .nav-link.active {
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 8px 16px !important;
+        }
+        .hero-section {
+            background: linear-gradient(135deg, rgba(106, 76, 147, 0.9), rgba(0, 169, 224, 0.9));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        .tagline {
+            font-size: 1.8rem;
+            color: #f8f9fa;
+            font-weight: 300;
+            font-style: italic;
+        }
+        .content-section {
+            background: white;
+            margin: 40px 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .section-header {
+            background: linear-gradient(90deg, #6a4c93 0%, #00a9e0 100%);
+            color: white;
+            padding: 30px;
+            margin: 0;
+        }
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin: 0;
+        }
+        .section-content {
+            padding: 40px;
+        }
+        .highlight-box {
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            border-left: 5px solid #00a9e0;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+        .benefit-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+            height: 100%;
+        }
+        .benefit-card:hover {
+            border-color: #00a9e0;
+            box-shadow: 0 5px 15px rgba(0,169,224,0.2);
+            transform: translateY(-5px);
+        }
+        .benefit-icon {
+            font-size: 3rem;
+            color: #6a4c93;
+            margin-bottom: 15px;
+        }
+        .benefit-title {
+            color: #6a4c93;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        .stats-container {
+            background: linear-gradient(135deg, #6a4c93, #00a9e0);
+            color: white;
+            padding: 50px 0;
+            margin: 40px 0;
+            border-radius: 15px;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+        }
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .timeline-item {
+            border-left: 3px solid #00a9e0;
+            padding-left: 25px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: #00a9e0;
+        }
+        .timeline-date {
+            color: #6a4c93;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .cta-section {
+            background: linear-gradient(135deg, #6a4c93, #00a9e0);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .cta-button {
+            background: white;
+            color: #6a4c93;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 30px;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+        .cta-button:hover {
+            background: #f8f9fa;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .mobile-nav {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .navbar-nav {
+                display: none;
+            }
+            .mobile-nav {
+                display: block;
+            }
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            .tagline {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-project-diagram me-2"></i>Project 5T
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link active" href="executive-summary.html">Executive Summary</a>
+                <a class="nav-link" href="customized-plan.html">Customized Plan</a>
+                <a class="nav-link" href="cutover-strategies.html">Cutover Strategies</a>
+                <a class="nav-link" href="mock-cutover-simulation.html">Mock Cutover</a>
+                <a class="nav-link" href="resources.html">Resources</a>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div class="mobile-nav">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mobileNavbar">
+                    <div class="navbar-nav">
+                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link active" href="executive-summary.html">Executive Summary</a>
+                        <a class="nav-link" href="customized-plan.html">Customized Plan</a>
+                        <a class="nav-link" href="cutover-strategies.html">Cutover Strategies</a>
+                        <a class="nav-link" href="mock-cutover-simulation.html">Mock Cutover</a>
+                        <a class="nav-link" href="resources.html">Resources</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">Executive Summary</h1>
+            <p class="hero-subtitle">Project 5T: Transforming Global Operations</p>
+            <p class="tagline">tna team transform transition together</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Project Overview -->
+        <div class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-bullseye me-3"></i>Project Overview & Strategic Intent
+                </h2>
+            </div>
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <p class="lead">Project 5T represents a transformational initiative to unify TNA Solutions' global operations through the implementation of Microsoft Dynamics 365, creating a single, integrated platform that will drive unprecedented efficiency, collaboration, and growth across our worldwide network of companies.</p>
+                        
+                        <div class="highlight-box">
+                            <h4><i class="fas fa-rocket me-2 text-primary"></i>Strategic Vision</h4>
+                            <p class="mb-0">Transform from <strong>disconnected companies with disparate legacy systems</strong> to a <strong>fully connected, intercompany global operation</strong> powered by integrated D365 DNA, enabling seamless collaboration, real-time visibility, and accelerated decision-making across all business units.</p>
+                        </div>
+
+                        <h4 class="mt-4 mb-3">Project Scope & Scale</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Global Implementation:</strong> Unified D365 platform across all TNA group companies</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Multi-Regional Deployment:</strong> Coordinated rollout across manufacturing sites and trading entities</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Comprehensive Integration:</strong> CRM, Financial Operations, Supply Chain, and Manufacturing modules</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Advanced Warehouse Management:</strong> Migration from Advanced to Basic Warehouse processes</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><strong>Third-Party Integrations:</strong> Citi Bank, Vault Design System, and partner platforms</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="stats-container">
+                            <div class="stat-item">
+                                <span class="stat-number">Oct 2</span>
+                                <span class="stat-label">Go-Live Date 2025</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">6</span>
+                                <span class="stat-label">Implementation Phases</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">Global</span>
+                                <span class="stat-label">Multi-Regional Scope</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Strategic Importance -->
+        <div class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-chart-line me-3"></i>Strategic Importance & Future Growth
+                </h2>
+            </div>
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="mb-3">Critical Business Drivers</h4>
+                        <div class="highlight-box">
+                            <h5><i class="fas fa-globe me-2 text-primary"></i>Global Competitiveness</h5>
+                            <p>In today's rapidly evolving marketplace, operational agility and real-time decision-making capabilities are essential for maintaining competitive advantage. Project 5T positions TNA Solutions to respond swiftly to market opportunities and customer demands across all regions.</p>
+                        </div>
+                        
+                        <div class="highlight-box">
+                            <h5><i class="fas fa-sync-alt me-2 text-success"></i>Operational Excellence</h5>
+                            <p>Legacy system fragmentation creates inefficiencies, data silos, and communication barriers. The unified D365 platform eliminates these obstacles, enabling streamlined processes, improved collaboration, and enhanced productivity across all business units.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="mb-3">Future Growth Enablement</h4>
+                        <div class="highlight-box">
+                            <h5><i class="fas fa-expand-arrows-alt me-2 text-info"></i>Scalability & Expansion</h5>
+                            <p>The integrated D365 platform provides a robust foundation for future growth, enabling rapid onboarding of new markets, products, and business units without the complexity of system integration challenges.</p>
+                        </div>
+                        
+                        <div class="highlight-box">
+                            <h5><i class="fas fa-brain me-2 text-warning"></i>Data-Driven Innovation</h5>
+                            <p>Unified data architecture enables advanced analytics, artificial intelligence, and machine learning capabilities, empowering data-driven decision-making and innovative business solutions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Microsoft D365 Benefits -->
+        <div class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fab fa-microsoft me-3"></i>Microsoft Dynamics 365 Strategic Benefits
+                </h2>
+            </div>
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                            <h5 class="benefit-title">Cloud-First Architecture</h5>
+                            <p>Modern, scalable cloud infrastructure ensures 99.9% uptime, automatic updates, and global accessibility while reducing IT infrastructure costs and complexity.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-link"></i>
+                            </div>
+                            <h5 class="benefit-title">Seamless Integration</h5>
+                            <p>Native integration with Microsoft ecosystem (Office 365, Teams, Power Platform) and extensive third-party connectivity capabilities streamline workflows and enhance productivity.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <h5 class="benefit-title">Advanced Analytics</h5>
+                            <p>Built-in Power BI integration provides real-time dashboards, predictive analytics, and AI-driven insights for informed decision-making across all business functions.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h5 class="benefit-title">Mobile-First Experience</h5>
+                            <p>Responsive design and dedicated mobile applications enable workforce productivity from anywhere, supporting remote work and field operations effectively.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h5 class="benefit-title">Enterprise Security</h5>
+                            <p>Microsoft's comprehensive security framework includes advanced threat protection, data encryption, compliance management, and identity governance capabilities.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h5 class="benefit-title">AI & Automation</h5>
+                            <p>Embedded artificial intelligence and process automation capabilities reduce manual tasks, improve accuracy, and enable intelligent business process optimization.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Expected Outcomes -->
+        <div class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-trophy me-3"></i>Expected Outcomes & Success Metrics
+                </h2>
+            </div>
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="mb-3">Operational Efficiency Gains</h4>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Process Optimization</div>
+                            <p>30-40% reduction in manual processes through automation and streamlined workflows across all business functions.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Data Accuracy</div>
+                            <p>95%+ data accuracy improvement through single source of truth and automated data validation processes.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Decision Speed</div>
+                            <p>50% faster decision-making through real-time data visibility and integrated reporting capabilities.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="mb-3">Business Growth Impact</h4>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Revenue Growth</div>
+                            <p>15-20% revenue growth potential through improved customer service, faster order processing, and enhanced market responsiveness.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Cost Reduction</div>
+                            <p>25-30% reduction in operational costs through process automation, reduced system maintenance, and improved resource utilization.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Market Expansion</div>
+                            <p>Accelerated market entry capabilities with standardized processes and scalable platform architecture.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Implementation Timeline -->
+        <div class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-calendar-alt me-3"></i>Implementation Roadmap
+                </h2>
+            </div>
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="mb-3">Phase 1-3: Foundation & Validation</h4>
+                        <div class="timeline-item">
+                            <div class="timeline-date">August 20-28, 2025</div>
+                            <p><strong>ETL4 Data Validation:</strong> Comprehensive data quality assessment and issue resolution</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">September 8-14, 2025</div>
+                            <p><strong>Mock Cutover Simulation:</strong> Full-scale testing with all integration partners</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">September 10-12, 2025</div>
+                            <p><strong>Warehouse Process Testing:</strong> Advanced to Basic Warehouse migration validation</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="mb-3">Phase 4-6: Readiness & Execution</h4>
+                        <div class="timeline-item">
+                            <div class="timeline-date">September 10 - October 26, 2025</div>
+                            <p><strong>User Readiness:</strong> Comprehensive training and knowledge transfer programs</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Sept 15- Oct 22, 2025</div>
+                            <p><strong>Risk Reduction:</strong> Design freeze and contingency planning implementation</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">October 29 - November 3, 2025</div>
+                            <p><strong>Cutover Execution:</strong> 6-day implementation window with go-live activation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="mb-4">Ready to Transform Your Operations?</h2>
+            <p class="lead mb-4">Explore the complete Project 5T implementation plan and resources</p>
+            <a href="customized-plan.html" class="cta-button">
+                <i class="fas fa-file-alt me-2"></i>View Customized Plan
+            </a>
+            <a href="cutover-strategies.html" class="cta-button">
+                <i class="fas fa-strategy me-2"></i>Explore Strategies
+            </a>
+            <a href="resources.html" class="cta-button">
+                <i class="fas fa-download me-2"></i>Access Resources
+            </a>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

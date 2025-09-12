@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 5T: D365 Cutover Strategy</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .slide {
+            width: 1280px;
+            height: 720px;
+            background: linear-gradient(to right, #ffffff 70%, #6a4c93 30%);
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .tna-logo {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            width: 120px;
+            height: auto;
+        }
+        .title {
+            font-size: 60px;
+            font-weight: bold;
+            color: #333333;
+        }
+        .subtitle {
+            font-size: 32px;
+            color: #6a4c93;
+            font-weight: 500;
+        }
+        .tagline-left {
+            font-size: 36px;
+            color: #00a9e0;
+            font-weight: 500;
+        }
+        .tagline-right {
+            font-size: 36px;
+            color: #ffffff;
+            font-weight: 500;
+        }
+        .status-text {
+            font-size: 48px;
+            font-weight: bold;
+            color: #333333;
+        }
+        .chevron {
+            color: #00a9e0;
+            font-size: 24px;
+        }
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            padding: 0 40px;
+        }
+        .footer-text {
+            font-size: 24px;
+        }
+        .connect { color: #f26522; font-weight: bold; }
+        .inspire { color: #ec008c; font-weight: bold; }
+        .innovate { color: #2e3192; font-weight: bold; }
+        .content-box {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 20px;
+        }
+        .navigation {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .nav-btn {
+            background: #6a4c93;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            margin: 5px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 18px;
+        }
+        .nav-btn:hover {
+            background: #00a9e0;
+            transform: scale(1.1);
+        }
+        .slide-counter {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(106, 76, 147, 0.9);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .timeline-item {
+            border-left: 4px solid #00a9e0;
+            padding-left: 25px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #00a9e0;
+        }
+        .phase-date {
+            color: #6a4c93;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        .phase-content {
+            color: #333333;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navigation">
+        <button class="nav-btn" onclick="previousSlide()"><i class="fas fa-chevron-left"></i></button>
+        <button class="nav-btn" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
+        <button class="nav-btn" onclick="toggleFullscreen()"><i class="fas fa-expand"></i></button>
+    </div>
+
+    <div class="slide-counter">
+        <span id="currentSlide">1</span> / <span id="totalSlides">10</span>
+    </div>
+
+    <div class="presentation-container">
+        <!-- Slide 1: Title -->
+        <div class="slide" id="slide-1">
+            <div class="flex flex-col justify-between h-full">
+                <div class="flex flex-col items-center justify-center py-10 px-20">
+                    <h1 class="title mb-8 text-center">Project 5T Cutover Strategy</h1>
+                    
+                    <!-- Transition Graphic -->
+                    <div class="flex items-center justify-center my-8 w-full">
+                        <!-- Left side - disconnected -->
+                        <div class="flex flex-col items-center w-1/3">
+                            <div class="relative">
+                                <svg width="300" height="300" viewBox="0 0 300 300">
+                                    <circle cx="150" cy="150" r="60" fill="#00a9e0" opacity="0.8"></circle>
+                                    <circle cx="100" cy="100" r="30" fill="#00a9e0" opacity="0.7"></circle>
+                                    <circle cx="80" cy="180" r="40" fill="#00a9e0" opacity="0.7"></circle>
+                                    <circle cx="200" cy="90" r="25" fill="#00a9e0" opacity="0.7"></circle>
+                                    <circle cx="220" cy="180" r="35" fill="#00a9e0" opacity="0.7"></circle>
+                                    <circle cx="60" cy="140" r="20" fill="#00a9e0" opacity="0.6"></circle>
+                                    <circle cx="240" cy="140" r="15" fill="#00a9e0" opacity="0.6"></circle>
+                                    <circle cx="150" cy="220" r="20" fill="#00a9e0" opacity="0.6"></circle>
+                                    <circle cx="150" cy="80" r="15" fill="#00a9e0" opacity="0.6"></circle>
+                                </svg>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <p class="tagline-left text-center">tna team transform<br>transition together</p>
+                                </div>
+                            </div>
+                            <p class="status-text mt-4">disconnected</p>
+                        </div>
+                        
+                        <!-- Middle - arrows -->
+                        <div class="flex items-center justify-center w-1/3">
+                            <i class="fas fa-chevron-right text-6xl text-blue-400 mx-2"></i>
+                            <i class="fas fa-chevron-right text-6xl text-blue-400 mx-2"></i>
+                        </div>
+                        
+                        <!-- Right side - integrated -->
+                        <div class="flex flex-col items-center w-1/3">
+                            <div class="bg-blue-400 rounded-full w-64 h-64 flex items-center justify-center">
+                                <p class="tagline-right text-center">tna with<br>D365 DNA</p>
+                            </div>
+                            <p class="status-text mt-4">integrated</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Footer -->
+                <div class="footer flex justify-start items-center">
+                    <p class="footer-text">
+                        <span class="chevron">&raquo;</span> <span class="connect">connect</span> 
+                        <span class="chevron">&raquo;</span> <span class="inspire">inspire</span> 
+                        <span class="chevron">&raquo;</span> <span class="innovate">innovate</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Implementation Timeline -->
+        <div class="slide" id="slide-2" style="display: none;">
+            <div class="flex flex-col h-full p-10">
+                <h2 class="subtitle mb-8">Implementation Timeline</h2>
+                <div class="content-box flex-1 overflow-y-auto">
+                    <div class="timeline-item">
+                        <div class="phase-date">Phase 1: ETL4 Data Validation</div>
+                        <div class="phase-content">August 20-28, 2025 | Address UAT issues, validate ETL3 data, resolve key data issues for September simulation</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="phase-date">Phase 2: Mock Cutover Simulation</div>
+                        <div class="phase-content">September 8-14, 2025 | Full simulation with HSO (FINOPS), DI (CRM) integration testing, Citi Bank and Vault integrations</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="phase-date">Phase 3: Warehouse Process Testing</div>
+                        <div class="phase-content">September 10-12, 2025 | Test Advanced to Basic Warehouse changes, manufacturing sites validation, trading entities verification</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="phase-date">Phase 4: Key User Readiness</div>
+                        <div class="phase-content">September 10 - October 26, 2025 | Training and knowledge transfer, CRM, FS, SCM, FIN functional areas, user acceptance testing</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="phase-date">Phase 5: Risk Reduction Measures</div>
+                        <div class="phase-content">Sept 15- Oct 22, 2025 | Design freeze implementation, vendor deliveries management, early customer shipments</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="phase-date">Phase 6: Cutover Execution</div>
+                        <div class="phase-content">October 29 - November 3, 2025 | 6-day window for system freeze, data migration execution, configuration deployment, go-live activation</div>
+                    </div>
+                </div>
+                <div class="footer flex justify-start items-center">
+                    <p class="footer-text">
+                        <span class="chevron">&raquo;</span> <span class="connect">connect</span> 
+                        <span class="chevron">&raquo;</span> <span class="inspire">inspire</span> 
+                        <span class="chevron">&raquo;</span> <span class="innovate">innovate</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional slides would continue with the same styling pattern -->
+        <!-- For brevity, showing structure for remaining slides -->
+        
+        <!-- Slide 3-10: Similar structure with original TNA styling -->
+        <div class="slide" id="slide-3" style="display: none;">
+            <div class="flex flex-col h-full p-10">
+                <h2 class="subtitle mb-8">Go-Live Date: November 3, 2025</h2>
+                <div class="content-box flex-1 flex items-center justify-center">
+                    <div class="text-center">
+                        <div class="text-8xl font-bold text-blue-400 mb-8">5T</div>
+                        <p class="tagline-left text-4xl mb-4">tna team transform transition together</p>
+                        <p class="text-2xl text-gray-600">Unified global D365 platform</p>
+                        <p class="text-2xl text-gray-600">Enhanced operational efficiency</p>
+                        <p class="text-2xl text-gray-600">Successful digital transformation</p>
+                    </div>
+                </div>
+                <div class="footer flex justify-start items-center">
+                    <p class="footer-text">
+                        <span class="chevron">&raquo;</span> <span class="connect">connect</span> 
+                        <span class="chevron">&raquo;</span> <span class="inspire">inspire</span> 
+                        <span class="chevron">&raquo;</span> <span class="innovate">innovate</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlideIndex = 1;
+        const totalSlides = 3; // Simplified for demo
+
+        function showSlide(index) {
+            for (let i = 1; i <= totalSlides; i++) {
+                const slide = document.getElementById('slide-' + i);
+                if (slide) slide.style.display = 'none';
+            }
+            
+            const currentSlide = document.getElementById('slide-' + index);
+            if (currentSlide) currentSlide.style.display = 'block';
+            document.getElementById('currentSlide').textContent = index;
+        }
+
+        function nextSlide() {
+            if (currentSlideIndex < totalSlides) {
+                currentSlideIndex++;
+                showSlide(currentSlideIndex);
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlideIndex > 1) {
+                currentSlideIndex--;
+                showSlide(currentSlideIndex);
+            }
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight' || event.key === ' ') {
+                nextSlide();
+            } else if (event.key === 'ArrowLeft') {
+                previousSlide();
+            } else if (event.key === 'f' || event.key === 'F11') {
+                event.preventDefault();
+                toggleFullscreen();
+            }
+        });
+
+        // Initialize
+        document.getElementById('totalSlides').textContent = totalSlides;
+        showSlide(1);
+    </script>
+</body>
+</html>
+

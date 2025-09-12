@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condensed Cutover Strategy - D365 Go-Live Cutover Plan</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: #1f2937;
+            background-color: #f9fafb;
+            line-height: 1.5;
+        }
+        .content h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .content h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+        .content h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .content p {
+            margin-bottom: 1rem;
+        }
+        .content ul, .content ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+        .content ul {
+            list-style-type: disc;
+        }
+        .content ol {
+            list-style-type: decimal;
+        }
+        .content li {
+            margin-bottom: 0.5rem;
+        }
+        .strategy-card {
+            transition: transform 0.2s ease-in-out;
+        }
+        .strategy-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-blue-800 text-white shadow-md">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <h1 class="text-2xl font-bold">
+                        <a href="index.html" class="hover:text-blue-200">
+                            D365 Cutover Plan
+                        </a>
+                    </h1>
+                </div>
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-6">
+                        <li><a href="index.html" class="hover:text-blue-200">Home</a></li>
+                        <li><a href="customized-plan.html" class="hover:text-blue-200">Customized Plan</a></li>
+                        <li><a href="cutover-strategies.html" class="hover:text-blue-200 font-bold border-b-2 border-white">Cutover Strategies</a></li>
+                        <li><a href="mock-cutover-simulation.html" class="hover:text-blue-200">Mock Cutover</a></li>
+                        <li><a href="resources.html" class="hover:text-blue-200">Resources</a></li>
+                    </ul>
+                </nav>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="md:hidden mt-4 hidden">
+                <ul class="flex flex-col space-y-2">
+                    <li><a href="index.html" class="block hover:text-blue-200">Home</a></li>
+                    <li><a href="customized-plan.html" class="block hover:text-blue-200">Customized Plan</a></li>
+                    <li><a href="cutover-strategies.html" class="block hover:text-blue-200 font-bold">Cutover Strategies</a></li>
+                    <li><a href="mock-cutover-simulation.html" class="block hover:text-blue-200">Mock Cutover</a></li>
+                    <li><a href="resources.html" class="block hover:text-blue-200">Resources</a></li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="max-w-5xl mx-auto">
+            <div class="bg-blue-50 p-6 rounded-lg mb-8">
+                <h1 class="text-3xl font-bold mb-4">D365 Condensed Cutover Strategy</h1>
+                <p class="text-lg text-gray-700">
+                    A comprehensive plan for TNA Solutions' synchronized global implementation of D365 within a 6-day cutover window, leveraging improved data loading capabilities.
+                </p>
+            </div>
+            
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-4">Strategy Overview</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-gray-700 mb-6">
+                        With the improved data loading capabilities, TNA Solutions will implement D365 Finance and Operations for all entities simultaneously with a condensed 6-day cutover window. CRM integration will be implemented at the end of the cutover period across all entities, providing a synchronized global implementation with minimal business disruption.
+                    </p>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg strategy-card mb-6">
+                        <h3 class="text-xl font-bold text-blue-800 mb-3">Condensed FinOps First with Synchronized Global Cutover</h3>
+                        <p class="text-gray-700 mb-4">
+                            This strategy implements D365 Finance and Operations for all entities simultaneously with CRM integration at the end of the cutover period, leveraging improved data loading capabilities to complete the transition within a 6-day window.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-4">Risk Reduction Measures</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-gray-700 mb-4">
+                        To minimize business disruption during the cutover blackout period, the following measures will be implemented:
+                    </p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                            <h4 class="font-bold text-yellow-800 mb-2">Vendor Delivery Management</h4>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Last deliveries accepted on October 24, 2025</li>
+                                <li>Normal operations resume on November 4, 2025</li>
+                                <li>Buffer period to process all received goods</li>
+                                <li>No deliveries scheduled during blackout</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                            <h4 class="font-bold text-yellow-800 mb-2">Customer Order Fulfillment</h4>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Ship customer orders early where possible</li>
+                                <li>Avoid fulfillment delays during blackout</li>
+                                <li>Coordinate between sales and operations</li>
+                                <li>Identify orders that can be expedited</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                            <h4 class="font-bold text-yellow-800 mb-2">Design Release Freeze</h4>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Freeze on new product design releases from October 24, 2025</li>
+                                <li>Hold new designs in Vault system</li>
+                                <li>Release into D365 from November 6, 2025</li>
+                                <li>Resume normal design processes after system stabilization</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                            <h4 class="font-bold text-yellow-800 mb-2">Manual Transaction Processing</h4>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Develop manual templates for urgent transactions</li>
+                                <li>Distribute templates to key users</li>
+                                <li>Capture all necessary information during blackout</li>
+                                <li>Enter transactions into D365 after November 6, 2025</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-4">Implementation Timeline</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-4 text-blue-800">Pre-Cutover Activities (August - September 2025)</h3>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-bold text-lg mb-2">Full Dry Run Data Migration (First Week of August 2025)</h4>
+                        <div class="pl-4 border-l-4 border-blue-200 mb-4">
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1 mb-2">
+                                <li>Execute complete data migration process for all entities</li>
+                                <li>Load all products, BOMs, open lines, inventory, and supporting data</li>
+                                <li>Validate data quality and completeness</li>
+                                <li>Document performance metrics and identify optimization opportunities</li>
+                                <li>Refine data migration scripts and procedures based on results</li>
+                            </ul>
+                        </div>
+                        
+                        <h4 class="font-bold text-lg mb-2">Mock Cutover Run (First Week of August 2025)</h4>
+                        <div class="pl-4 border-l-4 border-blue-200 mb-4">
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1 mb-2">
+                                <li>Simulate full cutover process with all teams</li>
+                                <li>Practice transition from legacy systems to D365</li>
+                                <li>Test business continuity procedures</li>
+                                <li>Validate technical cutover procedures</li>
+                                <li>Refine cutover plan based on mock run results</li>
+                            </ul>
+                        </div>
+                        
+                        <h4 class="font-bold text-lg mb-2">Design Release Freeze (October 24, 2025)</h4>
+                        <div class="pl-4 border-l-4 border-yellow-200 mb-4">
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1 mb-2">
+                                <li>Implement freeze on new product design releases</li>
+                                <li>Hold new designs in Vault system</li>
+                                <li>Prepare for release into D365 after November 6, 2025</li>
+                                <li>Communicate freeze to all design teams</li>
+                            </ul>
+                        </div>
+                        
+                        <h4 class="font-bold text-lg mb-2">Last Vendor Deliveries (October 24, 2025)</h4>
+                        <div class="pl-4 border-l-4 border-yellow-200 mb-4">
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1 mb-2">
+                                <li>Final day for accepting vendor deliveries before cutover</li>
+                                <li>Process all received goods in legacy system</li>
+                                <li>Communicate delivery resumption date (November 4, 2025) to vendors</li>
+                                <li>Ensure adequate inventory for blackout period</li>
+                            </ul>
+                        </div>
+                        
+                        <h4 class="font-bold text-lg mb-2">Final Preparations (September 2025)</h4>
+                        <div class="pl-4 border-l-4 border-blue-200 mb-4">
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1 mb-2">
+                                <li>Finalize cutover plan with detailed task assignments</li>
+                                <li>Complete user training across all entities</li>
+                                <li>Prepare production environment</li>
+                                <li>Establish 24/7 global support structure</li>
+                                <li>Distribute manual transaction templates to key users</li>
+                                <li>Accelerate customer order shipments where possible</li>
+                                <li>Conduct final readiness assessment</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold mb-4 text-blue-800">Cutover Execution (6-Day Window: October 29 - November 3, 2025)</h3>
+                    
+                    <div class="mb-6">
+                        <div class="space-y-4 mb-4">
+                            <div class="bg-blue-50 p-3 rounded">
+                                <p class="font-bold">Phase 1: System Freeze and Initial Data Extraction (October 28, 2025)</p>
+                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                    <li>Implement transaction freeze in legacy systems</li>
+                                    <li>Complete September month-end close activities</li>
+                                    <li>Extract initial data from legacy systems</li>
+                                    <li>Validate data extraction completeness</li>
+                                    <li>Prepare data transformation processes</li>
+                                    <li>Begin using manual transaction templates for urgent customer needs</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-blue-50 p-3 rounded">
+                                <p class="font-bold">Phase 2: Data Migration for All Entities (September 27-29, 2025)</p>
+                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                    <li>Transform and load master data for all entities</li>
+                                    <li>Load products and supporting data for all entities</li>
+                                    <li>Load BOMs, routings, and inventory data</li>
+                                    <li>Load open transactions and balances</li>
+                                    <li>Execute data validation procedures</li>
+                                    <li>Continue collecting manual transactions for post-go-live entry</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-blue-50 p-3 rounded">
+                                <p class="font-bold">Phase 3: System Configuration and Validation (September 30 - October 1, 2025)</p>
+                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                    <li>Configure system parameters for all entities</li>
+                                    <li>Set up security roles and user access</li>
+                                    <li>Configure workflows and approval processes</li>
+                                    <li>Validate intercompany processes</li>
+                                    <li>Conduct final system testing</li>
+                                    <li>Prepare for manual transaction entry post-go-live</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-blue-50 p-3 rounded">
+                                <p class="font-bold">Phase 4: CRM Integration and Final Preparation (October 1, 2025)</p>
+                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                    <li>Configure CRM integration for all entities</li>
+                                    <li>Establish dual-write connections</li>
+                                    <li>Synchronize customer and product data</li>
+                                    <li>Validate integration functionality</li>
+                                    <li>Conduct final go/no-go assessment</li>
+                                    <li>Finalize post-go-live manual transaction entry plan</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-green-50 p-3 rounded">
+                                <p class="font-bold">Phase 5: Go-Live (November 3, 2025)</p>
+                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                    <li>Activate D365 for all users globally</li>
+                                    <li>Implement hypercare support model</li>
+                                    <li>Monitor system performance and stability</li>
+                                    <li>Address critical issues</li>
+                                    <li>Begin post-implementation support</li>
+                                    <li>Begin entry of manual transactions collected during blackout</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-4">Post-Go-Live Activities</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-blue-700 mb-2">Immediate Post-Go-Live (October 2-5, 2025)</h4>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Enter all manual transactions collected during blackout period</li>
+                                <li>Resume normal vendor deliveries (November 4, 2025)</li>
+                                <li>Process backlogged customer orders</li>
+                                <li>Validate system functionality across all entities</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-blue-700 mb-2">New Product Design Release (November 6, 2025 onwards)</h4>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Begin releasing new product designs from Vault into D365</li>
+                                <li>Resume normal design release processes</li>
+                                <li>Validate design-to-manufacturing processes in D365</li>
+                                <li>Monitor system performance with new design releases</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-blue-700 mb-2">Hypercare Support (October 2 - November 2, 2025)</h4>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Extended support hours</li>
+                                <li>Daily status meetings</li>
+                                <li>Rapid issue resolution</li>
+                                <li>Performance monitoring</li>
+                                <li>User feedback collection</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-blue-700 mb-2">Stabilization (November - December 2025)</h4>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>System optimization</li>
+                                <li>Process refinement</li>
+                                <li>Additional user training as needed</li>
+                                <li>Knowledge transfer to support team</li>
+                                <li>Documentation updates</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-blue-700 mb-2">Continuous Improvement (January 2026 onwards)</h4>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>Process optimization</li>
+                                <li>Feature enhancements</li>
+                                <li>User adoption monitoring</li>
+                                <li>Performance tuning</li>
+                                <li>Regular system updates</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-4">Total Timeline</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                        <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                            <li><span class="font-medium">Full Dry Run & Mock Cutover:</span> First Week of August 2025</li>
+                            <li><span class="font-medium">Design Release Freeze:</span> October 24, 2025</li>
+                            <li><span class="font-medium">Last Vendor Deliveries:</span> October 24, 2025</li>
+                            <li><span class="font-medium">Cutover Window:</span> October 29 - November 3, 2025 (6 days)</li>
+                            <li><span class="font-medium">Go-Live Date:</span> November 3, 2025</li>
+                            <li><span class="font-medium">Resume Vendor Deliveries:</span> November 4, 2025</li>
+                            <li><span class="font-medium">Begin New Product Design Releases:</span> November 6, 2025</li>
+                            <li><span class="font-medium">Hypercare Support:</span> October 2 - November 2, 2025 (30 days)</li>
+                            <li><span class="font-medium">Stabilization:</span> November - December 2025</li>
+                            <li><span class="font-medium">Continuous Improvement:</span> January 2026 onwards</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2025 TNA Solutions D365 Implementation</p>
+                </div>
+                <div>
+                    <p>Last Updated: August 15, 2025</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
