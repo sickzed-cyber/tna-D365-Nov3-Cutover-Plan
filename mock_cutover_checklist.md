@@ -1,6 +1,6 @@
 # Mock Cutover Simulation Checklist
 
-## Project 5T - September 1-8, 2025
+## Project 5T - September 11-19, 2025
 
 ### Pre-Simulation Setup (Day -1)
 - [ ] Command center setup and testing
