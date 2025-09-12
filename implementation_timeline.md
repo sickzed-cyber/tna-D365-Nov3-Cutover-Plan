@@ -11,8 +11,8 @@
 - Prepare data for mock cutover
 
 ### Phase 2: Mock Cutover Simulation
-**September 8-14, 2025**
-- Full 8-day simulation with external partners
+**September 8-19, 2025**
+- Full 10-day simulation with external partners
 - HSO coordination for FINOPS implementation
 - DI coordination for CRM upgrade and Dual Write preparation
 - Integration testing with Citi Bank and Vault Design System
@@ -26,7 +26,7 @@
 - Validate process flows and user training
 
 ### Phase 4: Key User Readiness
-**September 10-25, 2025**
+**October 10-25, 2025**
 - Power User training completion
 - Team member training across all functional areas:
   - CRM (Customer Relationship Management)
@@ -36,15 +36,15 @@
 - Knowledge transfer and documentation
 
 ### Phase 5: Risk Reduction Measures
-**Sept 15- Oct 22, 2025**
-- Design release freeze (September 15)
-- Vendor delivery cutoff (September 22)
+**Oct 15- Oct 22, 2025**
+- Design release freeze (October 24)
+- Vendor delivery cutoff (October 24)
 - Early customer order shipments
 - Manual transaction templates preparation
 
 ### Phase 6: Cutover Execution
 **October 29 - November 3, 2025**
-- AX system close (September 26)
+- AX system close (September 28)
 - 6-day cutover window
 - Data migration and system configuration
 - Go-live preparation and validation
